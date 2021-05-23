@@ -62,6 +62,18 @@ The code has been tested on a GPU with the fllowing specifications:
 └───────────────────────────────┴──────────────────────┴──────────────────────┘
 ```
 
+# Steps
+
+## 1. Generate Data
+
+The first thing that you want to do is to generate data. Script for generating data is present in the file
+[`src/part_1_genertaeData/generateData.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_1_genertaeData/generateData.py)
+A convinient make option is present to generate the data. Use the command:
+
+`make generateData`
+
+to generate data within the `./data` folder. If this fodler isn't present, it will be created.
+
 # Authors
 
 Sankha S. Mukherjee - Initial work (2021)
