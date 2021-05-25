@@ -62,6 +62,18 @@ The code has been tested on a GPU with the fllowing specifications:
 └───────────────────────────────┴──────────────────────┴──────────────────────┘
 ```
 
+
+For some reason, the current version of tensorflow overflows in memory usage and
+errors out for RTX 2070 seres. For that reason, you will need to add the following
+lines to your TensorFlow code to prevent that from happening.
+
+```python
+import tensorflow as tf
+
+physical_devices = tf.config.list_physical_devices('GPU')
+tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
+```
+
 # Steps
 
 ## 1. Generate Data

@@ -142,3 +142,4 @@ results/
 exptLogs/
 config/awsConfig/awsConfig.json
 data/
+models/
