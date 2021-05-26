@@ -94,11 +94,8 @@ def main(args):
     print('Validation loss: ', score[0])
     print('Validation accuracy: ', score[1])
 
-    # sess = K.get_session()
     model.save( model_dir, 'myModel' )
-    tf.saved_model.save( model, model_dir)
-
-
+    
     return
 
 if __name__ == "__main__":
