@@ -79,7 +79,7 @@ tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
 ## 1. Generate Data
 
 The first thing that you want to do is to generate data. Script for generating data is present in the file
-[`src/part_1_genertaeData/generateData.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_1_genertaeData/generateData.py)
+[`src/part_1_genertaeData/generateData.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_01_genertaeData/generateData.py)
 A convinient make option is present to generate the data. Use the command:
 
 `make generateData`
@@ -89,18 +89,18 @@ to generate data within the `./data` folder. If this fodler isn't present, it wi
 ## 2. Train Locally
 
 Now, make sure that you are able to train the entire thing locally. Code for this is present in the file
-[`src/part_01_runLocal`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_01_runLocal).
+[`src/part_02_runLocal`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_02_runLocal).
 A convinient make option is present:
 
 `make runLocal`
 
 This will train the model with the data created in the previous location ...
 
-## 2. Train Locally With Args
+## 3. Train Locally With Args
 
 Now, make sure that you are able to train the entire thing locally with command lien arguments. Code for 
 this is present in the file
-[`src/part_01_runLocal`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_01_runLocal).
+[`src/part_03_runLocalArgs`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_03_runLocalArgs).
 A convinient make option is present:
 
 `make runLocalArgs`
