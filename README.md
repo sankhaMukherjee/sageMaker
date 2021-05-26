@@ -86,6 +86,27 @@ A convinient make option is present to generate the data. Use the command:
 
 to generate data within the `./data` folder. If this fodler isn't present, it will be created.
 
+## 2. Train Locally
+
+Now, make sure that you are able to train the entire thing locally. Code for this is present in the file
+[`src/part_01_runLocal`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_01_runLocal).
+A convinient make option is present:
+
+`make runLocal`
+
+This will train the model with the data created in the previous location ...
+
+## 2. Train Locally With Args
+
+Now, make sure that you are able to train the entire thing locally with command lien arguments. Code for 
+this is present in the file
+[`src/part_01_runLocal`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_01_runLocal).
+A convinient make option is present:
+
+`make runLocalArgs`
+
+This will train the model with the data created in the previous location ...
+
 # Authors
 
 Sankha S. Mukherjee - Initial work (2021)

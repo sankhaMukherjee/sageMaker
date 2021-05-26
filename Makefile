@@ -6,3 +6,6 @@ generateData:
 
 runLocal:
 	python3 src/part_02_runLocal/runLocal.py
+
+runLocalArgs:
+	python3 src/part_03_runLocalArgs/runLocalArgs.py
