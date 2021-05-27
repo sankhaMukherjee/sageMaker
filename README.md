@@ -28,6 +28,19 @@ like git and not be limited by Jupyter Notebook instances within SageMaker Studi
 4. Virtual Environment: Make sure that you are using a virtul environment. An example setup for the virtual 
    environment is shown in the section `Setting up your Virtual Environment`
 
+# Creating an S3 bucket
+
+You can create an S3 bucket with the AWS CLI command:
+
+`aws s3api create-bucket --bucket <bucket name> --region=<region name> --create-bucket-configuration LocationConstraint=<region name>`
+
+For example, I have created one with the command:
+
+`aws s3api create-bucket --bucket sankha-sagemaker-test --region=ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
+
+Check whether the bucket is available:
+
+`aws s3 ls | grep <part of the bucket name>`
 
 # Setting up your Virtual Environment
 
@@ -42,7 +55,7 @@ source env/bin/activate
 pip3 install ──upgrade pip
 pip3 install wheel
 pip3 install tensorflow=2.4.1
-pip3 install numpy scipy matplotlib jupyter
+pip3 install numpy scipy matplotlib jupyter pyyaml
 pip3 install sagemaker boto3
 ```
 
@@ -84,7 +97,11 @@ A convinient make option is present to generate the data. Use the command:
 
 `make generateData`
 
-to generate data within the `./data` folder. If this fodler isn't present, it will be created.
+to generate data within the `./data` folder. If this fodler isn't present, it will be created. Also, this data is pushed
+to your S3 bucket. The name of the bucket is present in the file `config/awsConfig/awsConfig.json`. Check to make sure
+that this file is indeed generated using the command:
+
+`aws s3 ls <bucket-name> --recursive`
 
 ## 2. Train Locally
 
@@ -104,6 +121,17 @@ this is present in the file
 A convinient make option is present:
 
 `make runLocalArgs`
+
+This will train the model with the data created in the previous location ...
+
+## 4. Train Locally With Sagemaker
+
+Now we shall run the entire script with SageMaker on the local machine. The code for this is present
+in the folder
+[`src/part_04_runLocalSageMaker`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_03_runLocalSageMaker).
+A convinient make option is present:
+
+`make runLocalSageMaker`
 
 This will train the model with the data created in the previous location ...
 

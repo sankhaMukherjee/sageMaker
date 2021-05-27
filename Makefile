@@ -9,3 +9,6 @@ runLocal:
 
 runLocalArgs:
 	python3 src/part_03_runLocalArgs/runLocalArgs.py
+
+runLocalSageMaker:
+	python3 src/part_04_runLocalSageMaker/runLocalSageMaker.py

@@ -144,3 +144,4 @@ config/awsConfig/awsConfig.json
 data/
 models/
 model/
+env3.7/
