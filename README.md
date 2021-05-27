@@ -135,6 +135,23 @@ A convinient make option is present:
 
 This will train the model with the data created in the previous location ...
 
+## 4. Train Locally With SagemakerS3
+
+Now we shall run the entire script with SageMaker on the local machine. This is exactly the same as the previous
+problem except that this one actually downloads the data from an S3 bucket provided. This will then be used for
+training the model. All the necessary plumbingis automatically done in the background by SageMaker, and hence, you
+will not have to do any of this at your end.
+
+The code for this is present
+in the folder
+[`src/part_04_runLocalSageMaker`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_03_runLocalSageMaker).
+A convinient make option is present:
+
+`make runLocalSageMaker`
+
+This will train the model with the data created in the previous location ...
+
+
 # Authors
 
 Sankha S. Mukherjee - Initial work (2021)

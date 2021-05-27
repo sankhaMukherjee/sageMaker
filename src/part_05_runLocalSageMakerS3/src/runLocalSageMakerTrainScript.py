@@ -76,6 +76,11 @@ def main(args):
     train_dir  = args.training
     test_dir   = args.validation
 
+    print(f'train_dir ------------------> {train_dir}')
+    print(f'test_dir ------------------> {test_dir}')
+    print(f'Files in the training folder: {os.listdir( train_dir )}')
+    print(f'Files in the testing folder: {os.listdir( test_dir )}')
+
     X_train, y_train = getTrainingData(train_dir)
     X_test, y_test   = getTestingData(test_dir)
 
