@@ -128,7 +128,7 @@ This will train the model with the data created in the previous location ...
 
 Now we shall run the entire script with SageMaker on the local machine. The code for this is present
 in the folder
-[`src/part_04_runLocalSageMaker`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_03_runLocalSageMaker).
+[`src/part_04_runLocalSageMaker`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_04_runLocalSageMaker).
 A convinient make option is present:
 
 `make runLocalSageMaker`
@@ -165,7 +165,7 @@ The code for this is present in the folder
 [`src/part_06_runRemoteSageMakerS3`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_06_runRemoteSageMakerS3).
 A convinient make option is present:
 
-`make runRemoteSageMakerS3`
+`make runRemoteSageMaker`
 
 
 # Authors
@@ -182,3 +182,4 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 1. [Setting the ARN for your local machine](https://www.youtube.com/watch?v=K3ngZKF31mc)
 2. [Using Script mode in Amazon SageMaker](https://www.youtube.com/watch?v=x94hpOmKtXM)
 3. [AWS Script Mode Examples GitHub Repo](https://github.com/aws-samples/amazon-sagemaker-script-mode)
+4. [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/overview.html)

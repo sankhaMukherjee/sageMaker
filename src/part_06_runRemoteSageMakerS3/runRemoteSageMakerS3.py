@@ -18,6 +18,7 @@ if __name__ == "__main__":
         py_version            = 'py37',
         script_mode           = True,
         hyperparameters       = {'epochs': 1},
+        output_path           = 's3://sankha-sagemaker-test/runs/models',
     )
 
     print('+-----------------------------------------')
