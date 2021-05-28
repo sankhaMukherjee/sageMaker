@@ -8,16 +8,12 @@ if __name__ == "__main__":
 
     role = json.load(open( 'config/awsConfig/awsConfig.json' ))['arn']
 
-    training   = 'file://src/part_04_runLocalSageMaker/data'
-    validation = 'file://src/part_04_runLocalSageMaker/data'
-    output     = 'file://src/part_04_runLocalSageMaker/model'
-
     tfEstimator = TensorFlow(
-        entry_point           = 'runLocalSageMakerTrainScript.py',
-        source_dir            = 'src/part_04_runLocalSageMaker/src',
+        entry_point           = 'runRemoteSageMakerTrainScript.py',
+        source_dir            = 'src/part_06_runRemoteSageMakerS3/src',
         role                  = role,
         instance_count        = 1,
-        instance_type         = 'local_gpu',
+        instance_type         = 'ml.p3.2xlarge',
         framework_version     = '2.4.1',
         py_version            = 'py37',
         script_mode           = True,
@@ -25,11 +21,10 @@ if __name__ == "__main__":
     )
 
     print('+-----------------------------------------')
-    print('| Starting the training job               ')
+    print('| Starting a Training Job')
     print('+-----------------------------------------')
 
     tfEstimator.fit({
-        'training'   : training,
-        'validation' : validation,
+        'training'   : 's3://sankha-sagemaker-test/training',
+        'validation' : 's3://sankha-sagemaker-test/validation',
     })
-    

@@ -4,18 +4,9 @@ import sagemaker, boto3, os
 from sagemaker.tensorflow import TensorFlow
 
 
-configText = '''
-[default]
-ap-southeast-1
-'''
-
 if __name__ == "__main__":
 
     role = json.load(open( 'config/awsConfig/awsConfig.json' ))['arn']
-
-    # training   = 'file://src/part_04_runLocalSageMaker/data'
-    # validation = 'file://src/part_04_runLocalSageMaker/data'
-    # output     = 'file://src/part_04_runLocalSageMaker/model'
 
     tfEstimator = TensorFlow(
         entry_point           = 'runLocalSageMakerTrainScript.py',
@@ -30,14 +21,9 @@ if __name__ == "__main__":
     )
 
     print('+-----------------------------------------')
-    print('| This is something')
+    print('| Starting a Training Job')
     print('+-----------------------------------------')
 
-    # tfEstimator.fit({
-    #     'training'   : training,
-    #     'validation' : validation,
-    # })
-    
     tfEstimator.fit({
         'training'   : 's3://sankha-sagemaker-test/training',
         'validation' : 's3://sankha-sagemaker-test/validation',

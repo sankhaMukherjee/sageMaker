@@ -15,3 +15,6 @@ runLocalSageMaker:
 
 runLocalSageMakerS3:
 	python3 src/part_05_runLocalSageMakerS3/runLocalSageMakerS3.py
+
+runRemoteSageMaker:
+	python3 src/part_06_runRemoteSageMakerS3/runRemoteSageMakerS3.py
