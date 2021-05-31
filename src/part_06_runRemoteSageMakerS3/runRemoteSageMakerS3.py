@@ -17,9 +17,18 @@ if __name__ == "__main__":
         framework_version     = '2.4.1',
         py_version            = 'py37',
         script_mode           = True,
-        hyperparameters       = {'epochs': 1},
-        output_path           = 's3://sankha-sagemaker-test/runs/models',
+        hyperparameters       = {'epochs': 30},
+        output_path           = 's3://sankha-sagemaker-test/models',
     )
+
+    # Number of GPUs per machine:
+    #
+    # | instance_type   | #GPUs | GPU Memory (GB) |
+    # |-----------------|-------|-----------------|
+    # | ml.p3.2xlarge   |    1  |              16 |
+    # | ml.p3.8xlarge   |    4  |              64 |
+    # | ml.p3.16xlarge  |    8  |             128 |
+    # | ml.p3.24xlarge  |    8  |             256 |
 
     print('+-----------------------------------------')
     print('| Starting a Training Job')

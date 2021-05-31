@@ -15,11 +15,9 @@ like git and not be limited by Jupyter Notebook instances within SageMaker Studi
 2. Create the proper IAM role that will allow you access to `S3` and `ECR` for AWS. Once you have created this
    role you will need to get the `Arn` of this role and save it somehwere. You can get it from the AWS console
    or with the AWS CLI command `aws iam list-roles` and finding the corresponding the ARN corresponding to the
-   role that you created. We will create an environment variable `AWS_ARN` that will allow us to securely use
-   this information within our code, without worring about whether we are saving this information within GitHub.
-   This information is also present in the file `config/awsConfig/awsConfig.json`. This file is not tracked by 
-   Git. An example if this file is present in the `config/awsConfig/awsConfig-example.json` file, with which
-   you will be able to create the requried file with youe credentials.
+   role that you created. This information is present in the file `config/awsConfig/awsConfig.json`. This file 
+   is not tracked by Git. An example if this file is present in the `config/awsConfig/awsConfig-example.json` 
+   file, with which you will be able to create the requried file with youe credentials.
 3. Docker: AWS makes heavy use of docker. Make sure that docker is installed and operational. Make sure that you
    are able to run a docker container that can run a tensorflow application on your system. For docker to access
    the GPU, you will need to install [`nvidia-docker`](https://github.com/NVIDIA/nvidia-docker) properly. Follow
@@ -167,6 +165,16 @@ A convinient make option is present:
 
 `make runRemoteSageMaker`
 
+# References
+
+Number of GPUs per machine for AWS (2021-05-28):
+
+| instance_type   | #GPUs | GPU Memory (GB) |
+|-----------------|-------|-----------------|
+| ml.p3.2xlarge   |    1  |              16 |
+| ml.p3.8xlarge   |    4  |              64 |
+| ml.p3.16xlarge  |    8  |             128 |
+| ml.p3.24xlarge  |    8  |             256 |
 
 # Authors
 
@@ -179,7 +187,9 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 # References
 
-1. [Setting the ARN for your local machine](https://www.youtube.com/watch?v=K3ngZKF31mc)
-2. [Using Script mode in Amazon SageMaker](https://www.youtube.com/watch?v=x94hpOmKtXM)
-3. [AWS Script Mode Examples GitHub Repo](https://github.com/aws-samples/amazon-sagemaker-script-mode)
+1. [(Video) Setting the ARN for your local machine](https://www.youtube.com/watch?v=K3ngZKF31mc)
+2. [(Video) Using Script mode in Amazon SageMaker](https://www.youtube.com/watch?v=x94hpOmKtXM)
+3. [AWS SageMaker Script Mode Examples GitHub Repo](https://github.com/aws-samples/amazon-sagemaker-script-mode)
+4. [AWS SageMaker Local Mode Examples](https://github.com/aws-samples/amazon-sagemaker-local-mode)
 4. [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/overview.html)
+5. [AWS Pricing Charts](https://aws.amazon.com/ec2/instance-types/p3/)

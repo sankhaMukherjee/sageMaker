@@ -11,7 +11,7 @@ from tensorflow.keras.losses     import categorical_crossentropy
 from tensorflow.keras.optimizers import SGD
 
 import numpy as np
-import argparse, os 
+import argparse, os, json, codecs
 
 def getModel():
 
@@ -67,6 +67,23 @@ def getArgs():
 
     return args
 
+
+# This is present in this example ...
+# https://github.com/aws-samples/amazon-sagemaker-script-mode/blob/master/tf-sentiment-script-mode/sentiment.py
+def save_history(path, history):
+
+    history_for_json = {}
+    # transform float values that aren't json-serializable
+    for key in list(history.history.keys()):
+        if type(history.history[key]) == np.ndarray:
+            history_for_json[key] == history.history[key].tolist()
+        elif type(history.history[key]) == list:
+           if  type(history.history[key][0]) == np.float32 or type(history.history[key][0]) == np.float64:
+               history_for_json[key] = list(map(float, history.history[key]))
+
+    with codecs.open(path, 'w', encoding='utf-8') as f:
+        json.dump(history_for_json, f, separators=(',', ':'), sort_keys=True, indent=4) 
+
 def main(args):
 
     epochs     = args.epochs
@@ -91,7 +108,7 @@ def main(args):
 
     print(model.summary())
 
-    model.fit( X_train, y_train, batch_size=batch_size, 
+    history = model.fit( X_train, y_train, batch_size=batch_size, 
                     validation_data=(X_test, y_test), validation_batch_size=batch_size, 
                     epochs=epochs, verbose=1)
 
@@ -100,7 +117,17 @@ def main(args):
     print('Validation loss: ', score[0])
     print('Validation accuracy: ', score[1])
 
-    model.save( model_dir, 'myModel' )
+    os.makedirs(os.path.join(model_dir, 'scores'))
+    with open(os.path.join(model_dir, 'scores', 'scores.json'), 'w') as fOut:
+        json.dump( score, fOut )
+
+    os.makedirs(os.path.join(model_dir, 'history'))
+    save_history( os.path.join(model_dir, 'history', 'history.p'), history)
+
+
+    os.makedirs(os.path.join(model_dir, '1'))
+    model.save( os.path.join(model_dir, '1'), 'myModel' )
+
     
     return
 
