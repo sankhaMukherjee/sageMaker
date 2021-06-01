@@ -1,0 +1,8 @@
+{
+    "newFolder"   : "src/part_07_batchInference/model",
+    "modelFolder" : "../temp/model/1",
+    "codeFolder"  : "src/part_07_batchInference/code",
+    "tarFile"     : "src/part_07_batchInference/model.tar.gz",
+    "bucket"      : "sankha-sagemaker-test",
+    "s3model"     : "inference/models/model.tar.gz"
+}
