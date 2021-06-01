@@ -9,6 +9,7 @@ import numpy as np
 
 import boto3
 from botocore.exceptions import ClientError
+from tqdm import tqdm
 
 
 def uploadFile(file_name, bucket, object_name=None):
@@ -98,6 +99,23 @@ def main():
     uploadFile( 'data/y_train.npy', bucket, 'training/y_train.npy' )
     uploadFile( 'data/X_test.npy',  bucket, 'validation/X_test.npy' )
     uploadFile( 'data/y_test.npy',  bucket, 'validation/y_test.npy' )
+
+    print('+------------------------------------------------')
+    print('|  Create data for TensorFlow Serving            ')
+    print('+------------------------------------------------')
+
+    os.makedirs('data/serving/X', exist_ok=True)
+    os.makedirs('data/serving/y', exist_ok=True)
+    for i, (xTemp, yTemp) in enumerate(tqdm(zip(X_test, y_test), total=X_test.shape[0])):
+        
+        fileName = f'data/serving/X/{i:07d}.npy'
+        np.save(fileName, xTemp)
+        uploadFile(fileName, bucket, f'serving/X/{i:07d}.npy' )
+        
+        fileName = f'data/serving/X/{i:07d}.npy'
+        np.save(f'data/serving/y/{i:07d}.npy', yTemp)
+        uploadFile(fileName, bucket, f'serving/y/{i:07d}.npy' )
+
 
     return
 
