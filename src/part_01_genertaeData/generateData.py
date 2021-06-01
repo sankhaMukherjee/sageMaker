@@ -106,15 +106,21 @@ def main():
 
     os.makedirs('data/serving/X', exist_ok=True)
     os.makedirs('data/serving/y', exist_ok=True)
+
     for i, (xTemp, yTemp) in enumerate(tqdm(zip(X_test, y_test), total=X_test.shape[0])):
         
         fileName = f'data/serving/X/{i:07d}.npy'
         np.save(fileName, xTemp)
         uploadFile(fileName, bucket, f'serving/X/{i:07d}.npy' )
+
         
         fileName = f'data/serving/X/{i:07d}.npy'
         np.save(f'data/serving/y/{i:07d}.npy', yTemp)
         uploadFile(fileName, bucket, f'serving/y/{i:07d}.npy' )
+
+        if i<10:
+            uploadFile(fileName, bucket, f'miniServing/X/{i:07d}.npy' )
+            uploadFile(fileName, bucket, f'miniServing/y/{i:07d}.npy' )
 
 
     return
