@@ -18,3 +18,8 @@ runLocalSageMakerS3:
 
 runRemoteSageMaker:
 	python3 src/part_06_runRemoteSageMakerS3/runRemoteSageMakerS3.py
+
+batchInference:
+	python3 src/part_07_batchInference/utils/createFolderStructure.py
+	python3 src/part_07_batchInference/batchInference.py 
+	

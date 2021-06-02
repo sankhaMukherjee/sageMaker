@@ -1,23 +1,38 @@
 import numpy as np
-import json 
+import json, io
+from logging 
 
 def _return_error(code, message):
     raise ValueError("Error: {}, {}".format(str(code), message))
 
 def input_handler(data, context):
 
+    logger = logging.getLogger()
 
-    try:
-        print(context)
+    logger.warning('------------- [warning]---------------------')
+    logger.debug('--------------- [Debug] ----------------------')
+    logger.error('---------------- [error] ---------------------')
 
-        # This is expected to be a np array of shape (28,28,1)
-        info = np.load( data.read() )
-        print(info.shape)
-        info = info.reshape((-1, 28, 28, 1))
-        
-        return json.dumps({ 'instances': info.to_list() })
-    except Exception as e:
-        _return_error( 01, f'\nError while encoding data\n{data}\nwith context [{}]:\n{e}\n' )
+    if context.request_content_type == "application/json":
+
+        # image = np.load(data)
+        # image = np.expand_dims(image, axis=0)
+        # instance = [{"dt_float": image.tolist()}]
+        # result = json.dumps( { "instances" : instance } )
+        # result = '{ "instances" : [[0]]}'
+        result = data.read().decode('utf-8')
+        result = json.loads( result )
+        result = np.array(result).astype(np.float32)
+        result = result.reshape(28, 28)
+        # result = np.expand_dims(result, axis=0)
+        # result = json.dumps( {"instances" : [result] } )
+        result = json.dumps( result )
+        return None
+
+    else:
+        _return_error(
+            415, 'Unsupported content type "{}"'.format(context.request_content_type or "Unknown")
+        )
 
 def output_handler(data, context):
 

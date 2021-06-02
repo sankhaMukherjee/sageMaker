@@ -85,16 +85,6 @@ def main():
     role   = json.load( open('config/awsConfig/awsConfig.json') )['arn']
     bucket = json.load( open('config/awsConfig/awsConfig.json') )['s3bucket']
 
-    # sess   = sagemaker.Session()
-
-    # s3Paths = []
-    # s3Paths.append( sess.upload_data( 'data/X_train.npy', key_prefix = prefix + '/training' )   )
-    # s3Paths.append( sess.upload_data( 'data/y_train.npy', key_prefix = prefix + '/training' )   )
-    # s3Paths.append( sess.upload_data( 'data/X_test.npy',  key_prefix = prefix + '/validation' ) )
-    # s3Paths.append( sess.upload_data( 'data/y_test.npy',  key_prefix = prefix + '/validation' ) )
-
-    # print(f'Generated s3 paths:[{ ", ".join(s3Paths) }]')
-
     uploadFile( 'data/X_train.npy', bucket, 'training/X_train.npy' )
     uploadFile( 'data/y_train.npy', bucket, 'training/y_train.npy' )
     uploadFile( 'data/X_test.npy',  bucket, 'validation/X_test.npy' )
@@ -111,16 +101,28 @@ def main():
         
         fileName = f'data/serving/X/{i:07d}.npy'
         np.save(fileName, xTemp)
-        uploadFile(fileName, bucket, f'serving/X/{i:07d}.npy' )
+        # uploadFile(fileName, bucket, f'serving/X/{i:07d}.npy' )
 
+        with open(fileName.replace('.npy', '.json'), 'w') as fOut:
+            json.dump( xTemp.tolist(), fOut )
         
-        fileName = f'data/serving/X/{i:07d}.npy'
-        np.save(f'data/serving/y/{i:07d}.npy', yTemp)
-        uploadFile(fileName, bucket, f'serving/y/{i:07d}.npy' )
-
         if i<10:
             uploadFile(fileName, bucket, f'miniServing/X/{i:07d}.npy' )
+            uploadFile(fileName.replace('.npy', '.json'), bucket, f'miniServingJson/X/{i:07d}.json' )
+            
+
+        
+        fileName = f'data/serving/y/{i:07d}.npy'
+        np.save(fileName, yTemp)
+        # uploadFile(fileName, bucket, f'serving/y/{i:07d}.npy' )
+
+        with open(fileName.replace('.npy', '.json'), 'w') as fOut:
+            json.dump( yTemp.tolist(), fOut )
+        
+        if i<10:
             uploadFile(fileName, bucket, f'miniServing/y/{i:07d}.npy' )
+            uploadFile(fileName.replace('.npy', '.json'), bucket, f'miniServingJson/y/{i:07d}.json' )
+
 
 
     return

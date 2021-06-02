@@ -79,5 +79,6 @@ Defined Functions:
 1. [Performing batch inference with TensorFlow Serving in Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/performing-batch-inference-with-tensorflow-serving-in-amazon-sagemaker/)
 2. [Official TensorFlow Serving Tutorial](https://www.tensorflow.org/tfx/tutorials/serving/rest_simple)
 3. [TensorFlow Serving (YouTube Video)](https://www.youtube.com/watch?v=zpKm8OxDBwE)
+4. [Content Types](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)
 
 
