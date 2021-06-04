@@ -26,7 +26,7 @@ def main():
         data         = f"s3://{s3bucket}/miniServingJson/X",
         content_type = "application/json",
         logs         = True,
-        job_name     = "tensorflow-BI",
+        job_name     = "tensorflow-BI-sankha-abcd",
         split_type   = None,
     )
 

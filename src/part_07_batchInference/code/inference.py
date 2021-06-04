@@ -20,13 +20,13 @@ def input_handler(data, context):
         # instance = [{"dt_float": image.tolist()}]
         # result = json.dumps( { "instances" : instance } )
         # result = '{ "instances" : [[0]]}'
-        result = data.read().decode('utf-8')
-        result = json.loads( result )
-        result = np.array(result).astype(np.float32)
-        result = result.reshape(28, 28)
+        # result = data.read().decode('utf-8')
+        # result = json.loads( result )
+        # result = np.array(result).astype(np.float32)
+        # result = result.reshape(28, 28)
         # result = np.expand_dims(result, axis=0)
         # result = json.dumps( {"instances" : [result] } )
-        result = json.dumps( result )
+        # result = json.dumps( result )
         return None
 
     else:
