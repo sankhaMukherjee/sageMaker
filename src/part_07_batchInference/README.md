@@ -22,24 +22,14 @@ There is a file that allows you to generate this folder structure, zip it, uploa
 it just created. This way any change that you make will be automatically be first uploaded into the s3 bucket in the right folder, and
 then, you can use the script that uses the Python API to run the command.
 
-For doing this, first download one of the pretrained models
-into a folder (call this `/path/to/pretrainedFolder/<model number>`). In the 
-[`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json)
-file, update the `"modelFolder"` to point to this folder. The code
-[`src/part_07_batchInference/utils/createFolderStructure.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/utils/createFolderStructure.py)
-will help you create the folder structure, zip it into a `.tar.gz` file, and upload it into
-your s3 bucket (defined by `"s3bucket"` in 
-[`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json))
-and upload it in the S3 file defined in `"s3model"` in 
-[`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json).
-Make sure that theinference code is present in the folder pointed to by `"codeFolder"` in 
-[`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json).
-Once this is done, run the script 
-[`src/part_07_batchInference/utils/createFolderStructure.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/utils/createFolderStructure.py).
+For doing this, 
 
-After this, the script 
-[src/part_07_batchInference/batchInference.py](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/batchInference.py)
-can be used for doing batch inference. 
+- download one of the pretrained models into a folder (call this `/path/to/pretrainedFolder/<model number>`). 
+- In the [`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json) file, update the `"modelFolder"` to point to this folder. - The code [`src/part_07_batchInference/utils/createFolderStructure.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/utils/createFolderStructure.py) will help you create the folder structure, zip it into a `.tar.gz` file, and upload it into your s3 bucket (defined by `"s3bucket"` in 
+- [`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json)) and upload it in the S3 file defined in `"s3model"` in [`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json).
+- Make sure that theinference code is present in the folder pointed to by `"codeFolder"` in [`src/part_07_batchInference/config.json`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/config.json).
+- Once this is done, run the script [`src/part_07_batchInference/utils/createFolderStructure.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/utils/createFolderStructure.py).
+- After this, the script [src/part_07_batchInference/batchInference.py](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/batchInference.py) can be used for doing batch inference. 
 
 It is possible to use a Make command for doing both things together. Use the command:
 
