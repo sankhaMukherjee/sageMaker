@@ -1,7 +1,10 @@
 from sagemaker.tensorflow.model import TensorFlowModel
 import json 
+from datetime import datetime as dt 
 
 def main():
+
+    now = dt.now().strftime('%Y-%m-%d--%H-%M-%S')
 
     config   = json.load(open('config/awsConfig/awsConfig.json'))
     s3bucket = config["s3bucket"]
@@ -26,7 +29,7 @@ def main():
         data         = f"s3://{s3bucket}/miniServingJson/X",
         content_type = "application/json",
         logs         = True,
-        job_name     = "tensorflow-BI-sankha-abcd",
+        job_name     = f"tensorflow-BI-sankha-{now}",
         split_type   = None,
     )
 
