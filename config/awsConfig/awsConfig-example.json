@@ -1,3 +1,4 @@
 {
-    "arn": "<your Arn for you IAM role>"
+    "arn": "<your arn for this test>",
+    "s3bucket": "<your github bucket>"
 }

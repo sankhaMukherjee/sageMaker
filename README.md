@@ -165,6 +165,11 @@ A convinient make option is present:
 
 `make runRemoteSageMaker`
 
+## 7. Batch Inference
+
+Check out the [README.md](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/README.md) file for this section. This is a little involved and thus
+cannot be described in this small section.
+
 # References
 
 Number of GPUs per machine for AWS (2021-05-28):
