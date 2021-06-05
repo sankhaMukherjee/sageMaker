@@ -170,6 +170,18 @@ A convinient make option is present:
 Check out the [README.md](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/README.md) file for this section. This is a little involved and thus
 cannot be described in this small section.
 
+## 8. Hyperparameer Optimization Using SageMaker
+
+This will allow you to create a training script as well as train a set of runs using the hyperparameter optimization tool
+provided by Sagemaker. Sagemaker will allow you to run a hyperparameter training job and start running those jobs on different
+instances directly, and store all runs, along with metadata in S3 buskets, so that they can be used later for your own
+experiments for deployments. Example code for doing this is present in the file 
+[`src/part_08_hpo/hop.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_08_hop/hpo.py)
+
+A convinient Make option is present. Just use the command:
+
+`make hpo`
+
 # References
 
 Number of GPUs per machine for AWS (2021-05-28):

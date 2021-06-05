@@ -100,6 +100,7 @@ def main(args):
     decay      = args.decay
     momentum   = args.momentum
     batch_size = args.batch_size
+
     model_dir  = args.model_dir
     train_dir  = args.training
     test_dir   = args.validation

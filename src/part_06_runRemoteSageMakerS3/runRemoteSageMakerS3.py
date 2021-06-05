@@ -17,7 +17,7 @@ if __name__ == "__main__":
         framework_version     = '2.4.1',
         py_version            = 'py37',
         script_mode           = True,
-        hyperparameters       = {'epochs': 30},
+        hyperparameters       = {'epochs': 2},
         output_path           = 's3://sankha-sagemaker-test/models',
     )
 

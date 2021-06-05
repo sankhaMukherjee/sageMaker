@@ -23,3 +23,5 @@ batchInference:
 	python3 src/part_07_batchInference/utils/createFolderStructure.py
 	python3 src/part_07_batchInference/batchInference.py 
 	
+hpo:
+	python3 src/part_08_hop/hpo.py

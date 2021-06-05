@@ -65,8 +65,8 @@ if __name__ == "__main__":
         objectiveName,
         hpoRange,
         metricDefinitions,
-        max_jobs=4,
-        max_parallel_jobs=2,
+        max_jobs=10,
+        max_parallel_jobs=1,
         objective_type=objectiveType,
     )
 
