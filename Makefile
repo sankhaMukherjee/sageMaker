@@ -25,3 +25,6 @@ batchInference:
 	
 hpo:
 	python3 src/part_08_hop/hpo.py
+
+transferLearning:
+	python3 src/part_09_startFromPrevModel/startFromPrevModel.py

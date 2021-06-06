@@ -165,10 +165,10 @@ A convinient make option is present:
 
 `make runRemoteSageMaker`
 
-## 7. Batch Inference
+## 7. Batch Inference (Not Done)
 
-Check out the [README.md](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/README.md) file for this section. This is a little involved and thus
-cannot be described in this small section.
+Check out the [README.md](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/README.md) file 
+for this section. This is a little involved and thus cannot be described in this small section.
 
 ## 8. Hyperparameer Optimization Using SageMaker
 
@@ -181,6 +181,13 @@ experiments for deployments. Example code for doing this is present in the file
 A convinient Make option is present. Just use the command:
 
 `make hpo`
+
+## 9. Transfer Learning
+
+Sometimes, you dont want to start from scratch. You want to start from a previous model that has been trained. This will allow
+you to checkpoint models, save models, and start from previous checkpoints or be able to finetune a previous model. This
+set of functions allow you to do that.
+
 
 # References
 
