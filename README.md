@@ -91,7 +91,7 @@ tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
 
 The first thing that you want to do is to generate data. Script for generating data is present in the file
 [`src/part_1_genertaeData/generateData.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_01_genertaeData/generateData.py)
-A convinient make option is present to generate the data. Use the command:
+A convenient make option is present to generate the data. Use the command:
 
 `make generateData`
 
@@ -105,7 +105,7 @@ that this file is indeed generated using the command:
 
 Now, make sure that you are able to train the entire thing locally. Code for this is present in the file
 [`src/part_02_runLocal`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_02_runLocal).
-A convinient make option is present:
+A convenient make option is present:
 
 `make runLocal`
 
@@ -116,7 +116,7 @@ This will train the model with the data created in the previous location ...
 Now, make sure that you are able to train the entire thing locally with command lien arguments. Code for 
 this is present in the file
 [`src/part_03_runLocalArgs`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_03_runLocalArgs).
-A convinient make option is present:
+A convenient make option is present:
 
 `make runLocalArgs`
 
@@ -127,7 +127,7 @@ This will train the model with the data created in the previous location ...
 Now we shall run the entire script with SageMaker on the local machine. The code for this is present
 in the folder
 [`src/part_04_runLocalSageMaker`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_04_runLocalSageMaker).
-A convinient make option is present:
+A convenient make option is present:
 
 `make runLocalSageMaker`
 
@@ -143,7 +143,7 @@ will not have to do any of this at your end.
 The code for this is present
 in the folder
 [`src/part_05_runLocalSageMakerS3`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_05_runLocalSageMakerS3).
-A convinient make option is present:
+A convenient make option is present:
 
 `make runLocalSageMakerS3`
 
@@ -161,7 +161,7 @@ a particular S3 bucket associated with the run. Finally, the instance will be to
 
 The code for this is present in the folder
 [`src/part_06_runRemoteSageMakerS3`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_06_runRemoteSageMakerS3).
-A convinient make option is present:
+A convenient make option is present:
 
 `make runRemoteSageMaker`
 
@@ -178,7 +178,7 @@ instances directly, and store all runs, along with metadata in S3 buskets, so th
 experiments for deployments. Example code for doing this is present in the file 
 [`src/part_08_hpo/hop.py`](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_08_hop/hpo.py)
 
-A convinient Make option is present. Just use the command:
+A convenient Make option is present. Just use the command:
 
 `make hpo`
 
