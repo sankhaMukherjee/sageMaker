@@ -1,4 +1,4 @@
 {
     "arn": "<your arn for this test>",
-    "s3bucket": "<your github bucket>"
+    "s3bucket": "<your S3 bucket name>"
 }
