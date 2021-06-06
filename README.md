@@ -186,7 +186,12 @@ A convinient Make option is present. Just use the command:
 
 Sometimes, you dont want to start from scratch. You want to start from a previous model that has been trained. This will allow
 you to checkpoint models, save models, and start from previous checkpoints or be able to finetune a previous model. This
-set of functions allow you to do that.
+set of functions allow you to do that. For doing this, run the file at 
+[src/part_09_startFromPrevModel/startFromPrevModel.py](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_09_startFromPrevModel/startFromPrevModel.py)
+
+There is a convinietn make option present for doing this. Just use the command:
+
+`make transferLearning`
 
 
 # References
