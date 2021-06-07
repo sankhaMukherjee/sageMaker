@@ -32,9 +32,9 @@ def main():
     # Create a TensorFlow Model object
     # ---------------------------------
     model = TensorFlowModel(
-        model_data = modelData, 
-        role       = config['arn'],
-        framework_version     = '2.4.1'
+        model_data         = modelData, 
+        role               = config['arn'],
+        framework_version  = '2.4.1'
     )
 
     # Create a predictor 
@@ -59,22 +59,14 @@ def main():
     result1 = predictor.predict( inputVal1 )
     result2 = predictor.predict( inputVal2 )
 
+    print('--- [Generating raw predictions] ----------------------')
     print(result1)
     print(result2)
-    # for y, yHat in zip(testy, result1):
-    #     print(y, yHat)
-    
-    # for i in range(10):
-    #     yOHE = testy[i]
-    #     yVal = np.argmax(testy[i])
-    #     yText = labels[yVal]
 
-    #     plt.figure()
-    #     plt.imshow( testX[i] )
-    #     plt.title( yText )
+    for i, (y, yHat1, yHat2) in enumerate(zip(testy, result1, result2)):
+        y, yHat1, yHat2 = np.argmax(y), np.argmax(yHat1), np.argmax(yHat2)
+        print(f'{i:5d} | {y:3d} | {yHat1:3d} | {yHat2:3d}')
     
-    # plt.show()
-
     predictor.delete_endpoint()
 
     

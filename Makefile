@@ -28,3 +28,6 @@ hpo:
 
 transferLearning:
 	python3 src/part_09_startFromPrevModel/startFromPrevModel.py
+
+deployAndPredict:
+	python3 src/part_10_deployAndPredict/deploy.py
