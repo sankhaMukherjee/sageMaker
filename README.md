@@ -182,6 +182,12 @@ A convenient Make option is present. Just use the command:
 
 `make hpo`
 
+For HPO, you can consider running an EC2 instance in the background with the Falsk server that will allow you to describe the
+HPO status and other parameters within a neat format in a single dashboard. The current SageMaker HPO object allows one to
+constantly monitor the state of the HPO object through your own code, and it is entirely possible to do this.
+
+If you want, you will be able to deploy the best model directly after an HPO run.
+
 ## 9. Transfer Learning
 
 Sometimes, you dont want to start from scratch. You want to start from a previous model that has been trained. This will allow
@@ -222,3 +228,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 4. [AWS SageMaker Local Mode Examples](https://github.com/aws-samples/amazon-sagemaker-local-mode)
 4. [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/overview.html)
 5. [AWS Pricing Charts](https://aws.amazon.com/ec2/instance-types/p3/)
+6. [HPO basic workflow](https://github.com/aws-samples/amazon-sagemaker-script-mode/blob/master/tf-2-workflow/tf-2-workflow.ipynb)
+7. [HPO monitoring](https://github.com/aws/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/analyze_results/HPO_Analyze_TuningJob_Results.ipynb)
