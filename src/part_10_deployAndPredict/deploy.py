@@ -63,9 +63,9 @@ def main():
     print(result1)
     print(result2)
 
-    for i, (y, yHat1, yHat2) in enumerate(zip(testy, result1, result2)):
+    for i, (y, yHat1, yHat2) in enumerate(zip(testy, result1['predictions'], result2['predictions'] )):
         y, yHat1, yHat2 = np.argmax(y), np.argmax(yHat1), np.argmax(yHat2)
-        print(f'{i:5d} | {y:3d} | {yHat1:3d} | {yHat2:3d}')
+        print(f'| {i:5d} | {y:3d} | {yHat1:3d} | {yHat2:3d}')
     
     predictor.delete_endpoint()
 
