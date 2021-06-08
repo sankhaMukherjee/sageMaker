@@ -4,6 +4,10 @@ generateData:
 	python3 'src/part_01_genertaeData/generateData.py'
 	ls -lh data
 
+generateDataPipeline:
+	python3 'src/part_01_genertaeData/generateDataPipeline.py'
+
+
 runLocal:
 	python3 src/part_02_runLocal/runLocal.py
 
@@ -31,3 +35,6 @@ transferLearning:
 
 deployAndPredict:
 	python3 src/part_10_deployAndPredict/deploy.py
+
+pipes:
+	python3 src/part_50_pipelines/pipelines.py
