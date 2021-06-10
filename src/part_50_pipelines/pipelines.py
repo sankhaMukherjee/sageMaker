@@ -1,4 +1,8 @@
+from sagemaker.inputs              import TrainingInput
+from sagemaker.workflow            import steps
 from sagemaker.workflow.parameters import ParameterInteger, ParameterString
+
+from src.part_50_pipelines.preprocessing import processing
 
 import json
 
@@ -20,12 +24,23 @@ def main():
     config = json.load(open('config/awsConfig/awsConfig.json'))
     bucket = config['s3bucket']
 
-    inputUri = f's3://{bucket}/training'
-    batchUri = f's3://{bucket}/validation'
+    # inputUri = f's3://{bucket}/training'
+    # batchUri = f's3://{bucket}/validation'
 
-    params = getParameters( inputUri, batchUri )
+    # params = getParameters( inputUri, batchUri )
 
-    print(params)
+    
+    experimentName = 'fashionMNIST'
+
+    # ----------- [Generate a preprocessing step] -------------------------
+    preProcessingStep = processing.getProcessingStep(experimentName)
+
+    # ----------- [Generate a training step] -------------------------
+    trainData = TrainingInput( s3_data = preProcessingStep.properties.ProcessingOutputConfig.Outputs['train'].S3Output.S3Uri)
+    testData  = TrainingInput( s3_data = preProcessingStep.properties.ProcessingOutputConfig.Outputs['test'].S3Output.S3Uri)
+
+    trainingStep = getTrainingStep(experimentName, trainData, testData)
+
 
     return 
 

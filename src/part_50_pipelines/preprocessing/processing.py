@@ -19,6 +19,33 @@ def getProcessor():
 
     return sklearnProcessor
 
+def getProcessingStep(experimentName):
+
+    preProcessingStep = steps.ProcessingStep(
+        name      = experimentName,
+        processor = getProcessor(),
+        code="src/part_50_pipelines/preprocessing/processData.py",
+        inputs=[
+            ProcessingInput(
+                source      = f"s3://{bucket}/data/pipelines/rawData", 
+                destination = "/opt/ml/processing/rawData"
+            ),
+        ],
+        outputs=[
+            ProcessingOutput(
+                source      = "/opt/ml/processing/intermediate/test",
+                output_name = f"test", 
+            ),
+
+            ProcessingOutput(
+                source      = "/opt/ml/processing/intermediate/train",
+                output_name = f"train", 
+            ),
+        ],
+    )
+
+    return preProcessingStep
+
 def main():
 
     skearnProcessor = getProcessor()

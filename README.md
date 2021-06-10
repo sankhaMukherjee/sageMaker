@@ -259,3 +259,4 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 5. [AWS Pricing Charts](https://aws.amazon.com/ec2/instance-types/p3/)
 6. [HPO basic workflow](https://github.com/aws-samples/amazon-sagemaker-script-mode/blob/master/tf-2-workflow/tf-2-workflow.ipynb)
 7. [HPO monitoring](https://github.com/aws/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/analyze_results/HPO_Analyze_TuningJob_Results.ipynb)
+8. [Pipelines API](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html)
