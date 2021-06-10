@@ -64,21 +64,29 @@ def main():
 
     print('-------------Sending the pipeline to SageMaker --------------------')
     pipeline.upsert(role_arn=role)
-    
     execution = pipeline.start()
 
+
+    # ----------------------------------------------------------------------------
+    # This section only polls the execution ...
+    # ----------------------------------------------------------------------------
     while True:
 
         # Poll the execution
-        executionData = execution.describe()
         
-        now            = dt.now().strftime('%Y/%m/%d %H:%M:%S')
-        stepsCompleted = '\t' + '\n\t'.join([ f'| {s} |' for s in execution.list_steps()])
+        stepsCompleted = []
+        for s in execution.list_steps():
+            stepsCompleted.append( f"{s['StepName']:50s} -> {s['StepStatus']}")
+
+        stepsCompleted = '\n'.join( stepsCompleted )
         stepsCompleted = f'Steps Completed: \n {stepsCompleted} \n'
+
+        executionData  = execution.describe()
         name           = executionData['PipelineExecutionDisplayName']
         status         = executionData['PipelineExecutionStatus']
 
-        statusReport = f'{name} : [{status}] at {now}\n{stepsCompleted}'
+        now           = dt.now().strftime('%Y/%m/%d %H:%M:%S')
+        statusReport  = f'{name} : [{status}] at {now}\n{stepsCompleted}'
         print(statusReport)
 
         if status != 'Executing':
@@ -87,38 +95,46 @@ def main():
         sleep(2)
 
 
-
-
+    # Confirm that the execution is completed
     execution.wait()
-    print(execution.list_steps())    
-    print(execution.list_steps())
-
+    
     return 
 
 if __name__ == "__main__":
     main()
 
-    {
-        'PipelineArn'                  : 'arn:aws:sagemaker:ap-southeast-1:387826921024:pipeline/fashionmnist-2021-06-11--00-17-44', 
-        'PipelineExecutionArn'         : 'arn:aws:sagemaker:ap-southeast-1:387826921024:pipeline/fashionmnist-2021-06-11--00-17-44/execution/9c937oa6drra', 
-        'PipelineExecutionDisplayName' : 'execution-1623341866106', 
-        'PipelineExecutionStatus'      : 'Executing', 
-        'CreationTime'                 : datetime.datetime(2021, 6, 11, 0, 17, 46, 13000, tzinfo=tzlocal()), 
-        'LastModifiedTime'             : datetime.datetime(2021, 6, 11, 0, 17, 46, 13000, tzinfo=tzlocal()), 
-        'CreatedBy'                    : {}, 
-        'LastModifiedBy'               : {}, 
-        'ResponseMetadata'             : {
-            'RequestId'      : 'e236557e-7d75-4e89-b4bb-2bc51a882ffa', 
-            'HTTPStatusCode' : 200, 
-            'HTTPHeaders'    : {
-                'x-amzn-requestid': 'e236557e-7d75-4e89-b4bb-2bc51a882ffa', 
-                'content-type': 'application/x-amz-json-1.1', 
-                'content-length': '441', 
-                'date': 'Thu, 10 Jun 2021 16:17:45 GMT'
-            }, 
-            'RetryAttempts': 0
-        }
-    }
+    # {
+    #     'PipelineArn'                  : 'arn:aws:sagemaker:ap-southeast-1:387826921024:pipeline/fashionmnist-2021-06-11--00-17-44', 
+    #     'PipelineExecutionArn'         : 'arn:aws:sagemaker:ap-southeast-1:387826921024:pipeline/fashionmnist-2021-06-11--00-17-44/execution/9c937oa6drra', 
+    #     'PipelineExecutionDisplayName' : 'execution-1623341866106', 
+    #     'PipelineExecutionStatus'      : 'Executing', 
+    #     'CreationTime'                 : datetime.datetime(2021, 6, 11, 0, 17, 46, 13000, tzinfo=tzlocal()), 
+    #     'LastModifiedTime'             : datetime.datetime(2021, 6, 11, 0, 17, 46, 13000, tzinfo=tzlocal()), 
+    #     'CreatedBy'                    : {}, 
+    #     'LastModifiedBy'               : {}, 
+    #     'ResponseMetadata'             : {
+    #         'RequestId'      : 'e236557e-7d75-4e89-b4bb-2bc51a882ffa', 
+    #         'HTTPStatusCode' : 200, 
+    #         'HTTPHeaders'    : {
+    #             'x-amzn-requestid': 'e236557e-7d75-4e89-b4bb-2bc51a882ffa', 
+    #             'content-type': 'application/x-amz-json-1.1', 
+    #             'content-length': '441', 
+    #             'date': 'Thu, 10 Jun 2021 16:17:45 GMT'
+    #         }, 
+    #         'RetryAttempts': 0
+    #     }
+    # }
+
+    # {
+    #     'StepName'  : 'fashionMNIST-2021-06-11--01-07-42-preprocess', 
+    #     'StartTime' : datetime.datetime(2021, 6, 11, 1, 7, 45, 102000, tzinfo=tzlocal()), 
+    #     'StepStatus': 'Executing', 
+    #     'Metadata': {
+    #         'ProcessingJob': {
+    #             'Arn': 'arn:aws:sagemaker:ap-southeast-1:387826921024:processing-job/pipelines-7qjz5e7zwzvd-fashionmnist-2021-06-93egbiyqvl'
+    #         }
+    #     }
+    # }
 
 
 
