@@ -1,6 +1,6 @@
-from sagemaker.sklearn.processing import SKLearnProcessor
-from sagemaker.processing import ProcessingInput, ProcessingOutput
-
+from sagemaker.workflow            import steps
+from sagemaker.processing          import ProcessingInput, ProcessingOutput
+from sagemaker.sklearn.processing  import SKLearnProcessor
 import os, json
 
 def getProcessor():
@@ -20,6 +20,9 @@ def getProcessor():
     return sklearnProcessor
 
 def getProcessingStep(experimentName):
+
+    config = json.load(open('config/awsConfig/awsConfig.json'))
+    bucket = config['s3bucket']
 
     preProcessingStep = steps.ProcessingStep(
         name      = experimentName,

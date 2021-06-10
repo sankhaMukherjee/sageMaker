@@ -30,7 +30,7 @@ def getTrainingStep(experimentName, trainData, testData):
         name      = experimentName,
         estimator = getEstimator(),
         inputs    = {
-            "train"      : trainData,
+            "training"   : trainData,
             "validation" : testData
         },
     )
