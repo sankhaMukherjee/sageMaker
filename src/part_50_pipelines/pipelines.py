@@ -58,6 +58,9 @@ def main():
         ]
     )
 
+    # ----------- [generate code for processing the results] -------------------------
+
+
     definition    = json.loads(pipeline.definition())
     definitionStr = json.dumps( definition, indent=4, sort_keys=True )
     print( definitionStr )

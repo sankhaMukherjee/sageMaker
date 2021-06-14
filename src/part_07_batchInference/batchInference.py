@@ -12,7 +12,8 @@ def main():
     model = TensorFlowModel(
         model_data        = f"s3://{s3bucket}/inference/models/model.tar.gz",
         role              = config['arn'],
-        framework_version = '2.4.1'
+        framework_version = '2.4.1',
+        entry_point       = 'src/part_07_batchInference/code/inference.py'
     )
 
 

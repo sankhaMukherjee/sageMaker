@@ -16,7 +16,6 @@ def getProcessor():
         instance_count    = 1,
     )
 
-
     return sklearnProcessor
 
 def getProcessingStep(experimentName):

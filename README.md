@@ -14,6 +14,9 @@
   - [5.9. Transfer Learning](#59-transfer-learning)
   - [5.10. Deploy and Predict](#510-deploy-and-predict)
 - [6. References](#6-references)
+  - [6.1. GPU Instance Types](#61-gpu-instance-types)
+  - [6.2. Accelerator types (2021-06-14):](#62-accelerator-types-2021-06-14)
+  - [Prebuilt images (2021-06-14)](#prebuilt-images-2021-06-14)
 - [7. Authors](#7-authors)
 - [8. License](#8-license)
 - [9. References](#9-references)
@@ -231,6 +234,7 @@ There is a convenient Make option for doing this. Just use the command:
 
 # 6. References
 
+## 6.1. GPU Instance Types
 Number of GPUs per machine for AWS (2021-05-28):
 
 | instance_type   | #GPUs | GPU Memory (GB) |
@@ -239,6 +243,36 @@ Number of GPUs per machine for AWS (2021-05-28):
 | ml.p3.8xlarge   |    4  |              64 |
 | ml.p3.16xlarge  |    8  |             128 |
 | ml.p3.24xlarge  |    8  |             256 |
+
+[Source](https://aws.amazon.com/sagemaker/pricing/)
+
+## 6.2. Accelerator types (2021-06-14):
+
+| Accelerator Type |F32 Throughput in TFLOPS  |F16 Throughput in TFLOPS | Memory in GB  |
+|------------------|--------------------------|-------------------------|---------------|
+| ml.eia2.medium   | 1                        | 8                       | 2             |
+| ml.eia2.large    | 2                        | 16                      | 4             |
+| ml.eia2.xlarge   | 4                        | 32                      | 8             |
+| ml.eia1.medium   | 1                        | 8                       | 1             |
+| ml.eia1.large    | 2                        | 16                      | 2             |
+| ml.eia1.xlarge   | 4                        | 32                      | 4             |
+
+[Source](https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html)
+
+## Prebuilt images (2021-06-14)
+
+- Data Science                     (datascience-1.0)
+- Base Python                      (python-3.6)
+- MXNet (optimized for CPU)        (mxnet-1.6-cpu-py36)
+- MXNet (optimized for GPU)        (mxnet-1.6-gpu-py36)
+- PyTorch (optimized for CPU)      (pytorch-1.4-cpu-py36)
+- PyTorch (optimized for GPU)      (pytorch-1.4-gpu-py36)
+- TensorFlow (optimized for CPU)   (tensorflow-1.15-cpu-py36)
+- TensorFlow (optimized for GPU)   (tensorflow-1.15-gpu-py36)
+- TensorFlow 2 (optimized for CPU) (tensorflow-2.1-cpu-py36)
+- TensorFlow 2 (optimized for GPU) (tensorflow-2.1-gpu-py36)
+
+[Source](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-available-images.html)
 
 # 7. Authors
 
