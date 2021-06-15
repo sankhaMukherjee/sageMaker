@@ -13,7 +13,6 @@ def input_handler(data, context):
 
         result = data.read().decode('utf-8')
         result = json.loads( result )
-        
         result = json.dumps( {"instances" : [result] } )
         return result
 
