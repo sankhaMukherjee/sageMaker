@@ -9,10 +9,11 @@
   - [5.4. Train Locally With Sagemaker](#54-train-locally-with-sagemaker)
   - [5.5. Train Locally With SagemakerS3](#55-train-locally-with-sagemakers3)
   - [5.6. Train on a remote machine with SageMaker](#56-train-on-a-remote-machine-with-sagemaker)
-  - [5.7. Batch Inference (Not Done)](#57-batch-inference-not-done)
+  - [5.7. Batch Inference](#57-batch-inference)
   - [5.8. Hyperparameer Optimization Using SageMaker](#58-hyperparameer-optimization-using-sagemaker)
   - [5.9. Transfer Learning](#59-transfer-learning)
   - [5.10. Deploy and Predict](#510-deploy-and-predict)
+  - [5.11. SageMaker Pipelines](#511-sagemaker-pipelines)
 - [6. References](#6-references)
   - [6.1. GPU Instance Types](#61-gpu-instance-types)
   - [6.2. Accelerator types (2021-06-14):](#62-accelerator-types-2021-06-14)
@@ -187,7 +188,7 @@ A convenient make option is present:
 
 `make runRemoteSageMaker`
 
-## 5.7. Batch Inference (Not Done)
+## 5.7. Batch Inference
 
 Check out the [README.md](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_07_batchInference/README.md) file 
 for this section. This is a little involved and thus cannot be described in this small section.
@@ -231,6 +232,20 @@ done using the code present in
 There is a convenient Make option for doing this. Just use the command:
 
 `make deployAndPredict`
+
+## 5.11. SageMaker Pipelines
+
+It is entirely possible to create pipelines in Sagemaker so that you dont need to run one job, wait for that
+result, and then run another job. All of this can be done within a pipeline, using SageMaker pipelines. Hence,
+you can create a pipeline for example, that will get data from a set of S3 buckets, generate train/validation/
+test splits, and then train a model using the right set of data.
+
+An example of the pipelines is present in 
+[src/part_50_pipelines/pipelines.py](https://github.com/sankhaMukherjee/sageMaker/blob/master/src/part_50_pipelines/pipelines.py). 
+
+There is a convenient method for generating the pipeline. Just use the command:
+
+`make pipes`
 
 # 6. References
 
